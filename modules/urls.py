@@ -1,0 +1,87 @@
+from django.urls import path
+from .views import (
+    TrainingModuleListCreateView,
+    TrainingModuleDetailView,
+    ActivityModuleListCreateView,
+    ActivityModuleDetailView,
+    UserActivityModuleListCreateView,
+    UserActivityModuleDetailView,
+    UserModuleListCreateView,
+    UserModuleDetailView,
+    SurveyModuleListCreateView,
+    SurveyModuleDetailView,
+    UserSurveyModuleListCreateView,
+    UserSurveyModuleDetailView,
+    CreateUserModuleView,
+    TrainingModuleListView,
+)
+
+
+urlpatterns = [
+    path(
+        'training-modules/',
+        TrainingModuleListCreateView.as_view(),
+        name='trainingmodule-list-create',
+    ),
+    path('modules/', TrainingModuleListView.as_view(), name="get-modules"),
+    path(
+        'training-modules/<int:pk>/',
+        TrainingModuleDetailView.as_view(),
+        name='trainingmodule-detail',
+    ),
+    path(
+        'activity-modules/',
+        ActivityModuleListCreateView.as_view(),
+        name='activitymodule-list-create',
+    ),
+    path(
+        'activity-modules/<int:pk>/',
+        ActivityModuleDetailView.as_view(),
+        name='activitymodule-detail',
+    ),
+    path(
+        'user-activity-modules/',
+        UserActivityModuleListCreateView.as_view(),
+        name='useractivitymodule-list-create',
+    ),
+    path(
+        'user-activity-modules/<int:pk>/',
+        UserActivityModuleDetailView.as_view(),
+        name='useractivitymodule-detail',
+    ),
+    path(
+        'user-modules/',
+        UserModuleListCreateView.as_view(),
+        name='usermodule-list-create',
+    ),
+    path(
+        'user-modules/<int:pk>/',
+        UserModuleDetailView.as_view(),
+        name='usermodule-detail',
+    ),
+    path(
+        'survey-modules/',
+        SurveyModuleListCreateView.as_view(),
+        name='surveymodule-list-create',
+    ),
+    path(
+        'survey-modules/<int:pk>/',
+        SurveyModuleDetailView.as_view(),
+        name='surveymodule-detail',
+    ),
+    path(
+        'user-survey-modules/',
+        UserSurveyModuleListCreateView.as_view(),
+        name='usersurveymodule-list-create',
+    ),
+    path(
+        'user-survey-modules/<int:pk>/',
+        UserSurveyModuleDetailView.as_view(),
+        name='usersurveymodule-detail',
+    ),
+    path(
+        'create-user-module/',
+        CreateUserModuleView.as_view(),
+        name='create-user-module',
+    ),
+]
