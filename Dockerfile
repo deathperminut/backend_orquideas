@@ -1,24 +1,23 @@
-# Use an official Python runtime as a parent image
+# Usa una imagen base oficial de Python
 FROM python:3.12
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# Set the working directory in the container to /orcas
+# Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copy the current directory contents into the container at /orcas
+# Copia los archivos de requisitos y los instala
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+# Dockerfile
+
+
+# Copia el archivo de credenciales al contenedor
+COPY credenciales/orquideas-432422-e8f2f67257bb.json /app/credenciales/orquideas-432422-e8f2f67257bb.json
+
+# Copia el resto del código de la aplicación al contenedor
 COPY . .
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Expose the port the orcas runs on
+# Expone el puerto en el que la aplicación escuchará
 EXPOSE 8080
 
-# Run migrate and then start the Django development server
-CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8080
-# Configura el comando de inicio para el contenedor
-CMD ["python3","manage.py","runserver","0.0.0.0:8080"]
+# Establece el comando para iniciar la aplicación
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]

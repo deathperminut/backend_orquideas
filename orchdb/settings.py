@@ -92,7 +92,7 @@ WSGI_APPLICATION = "orchdb.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST":"34.16.41.177",
+        "HOST": "/cloudsql/orquideas-432422:us-central1:orquideas",  # Usa el nombre de conexión aquí
         "NAME": "Orquideas",
         "USER":"Deathperminut",
         "PASSWORD":"XnkUk>hUv&tdu.cX",
